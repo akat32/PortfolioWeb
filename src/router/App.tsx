@@ -8,7 +8,7 @@ import {
 import './App.scss'
 import { HeaderNavigation } from './navigation/header'
 import { Home, Portfolio } from '../component'
-
+import { RedirectLink } from './Redirect/index'
 const App: React.FC = () => {
   return (
     <Router>
@@ -21,9 +21,11 @@ const App: React.FC = () => {
           <Route exact path = '/Portfolio/'>
             <Portfolio />
           </Route>
+          <Route path ='/'>
+            <RedirectLink/>
+          </Route>
         </Switch>
       </>
-
     </Router>  
   );
 }
