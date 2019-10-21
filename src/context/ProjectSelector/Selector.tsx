@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 
 const SelectorContext = createContext({
     state : { number : 0 },
@@ -6,7 +6,11 @@ const SelectorContext = createContext({
         setNumber: () => {}
     }
 })
-const SelectorProvider = ( children: any ) => {
+
+interface Ijson {
+    children : Object
+}
+const SelectorProvider = (childrenJson : Ijson) => {
     const [ number, setNumber ] = useState(0)
     const Svalue:any = {
         state :  { number },
@@ -15,12 +19,12 @@ const SelectorProvider = ( children: any ) => {
 
     return (
         <SelectorContext.Provider value = { Svalue }>
-            {children}
+            {childrenJson.children}
         </SelectorContext.Provider>
     )
 }
 
-const { Consumer: SelectorConsumer } = SelectorContext
+const SelectorConsumer:any = SelectorContext.Consumer
 
 export { SelectorConsumer, SelectorProvider }
 
