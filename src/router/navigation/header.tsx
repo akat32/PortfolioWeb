@@ -18,9 +18,14 @@ export const HeaderNavigation: React.FC = () => {
         else return url
     }
     function clickLink ( contact: String ) {
-        if( contact === 'Github' ) window.location.href = 'https://github.com/akat32'
-        else if ( contact === 'Blog' ) window.location.href = 'https://blog.naver.com/akat32'
+        let url = ''
+        if( contact === 'Github' ) url = 'https://github.com/akat32'
+        else if ( contact === 'Blog' ) url = 'https://blog.naver.com/akat32'
         else if ( contact === 'Resume' ) alert('준비중입니다!')
+        if ( url != '') {
+            let win = window.open(url, '_blank');
+            win!.focus();
+        }
         setMatch('/'+contact)
     }
     return (

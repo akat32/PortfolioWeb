@@ -14,6 +14,7 @@ const App: React.FC = () => {
     <Router>
       <>
         <HeaderNavigation />
+        <div style = {{ height : '4em'}}/>
         <Switch>
           <Route exact path = '/'>
             <Home />
