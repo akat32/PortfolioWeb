@@ -1,6 +1,18 @@
 .title {
+    //NotoSansCJKkr-Black
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 0.4vh;
+}
+.subTitle {
+    font-size: .95em;
 }
 
-.subTitle {
-    
+.contant {
+    display: flex;
+    position: relative;
+}
+
+.alignRight {
+    text-align: end;
 }

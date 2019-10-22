@@ -15,11 +15,17 @@ import './style.scss'
 // 기종 변경
 // description
 import { ProjectSelector } from './ProjectSelector/index'
+import { ProjectInfo } from './ProjectInfo/index'
 
 export const Portfolio = () => {
     return (
-        <div>
-            <ProjectSelector/>
+        <div className = "project">
+            <div style = {{ height : '4em'}}/>
+            <div className = "contant">
+                <ProjectSelector/>
+                <div style = {{ flex : 1 }}/>
+                <ProjectInfo/>
+            </div>
         </div>
     )
 }

@@ -1,0 +1,61 @@
+.projectInfo {
+    margin-right: 5.5vw;
+    margin-top: 7.7vh;
+    .line {
+        border-color: #f8f8f8;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+}
+
+.infoText {
+    font-size: .95em;
+}
+.infoBText {
+    font-size: .8em;
+    display: block;
+    width: 292px;
+    margin-bottom: 15px;
+}
+.deviceSelector {
+    // width: 292px;
+    display: flex;
+    margin-top: 35px;
+    margin-bottom: 42px;
+    .img {
+        background-repeat: no-repeat;
+        background-size: contain; 
+    }
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .DeviceTitle {
+        font-size: .85em;
+    }
+    .Iphone {
+        margin-left: 17px;
+        .img {
+            width: 28.9px;
+            height: 51.1px;
+            background-image: url('../../../assets/drawable/phone_icon.svg');
+        }
+    }
+    .Tablet {
+        .img {
+            width: 38.4px;
+            height: 51.1px;
+            background-image: url('../../../assets/drawable/table_icon.svg');
+        }        
+    }
+    .Computer {
+        margin-right: 17px;
+        .img {
+            margin-top: 1.45px;
+            width: 55px;
+            height: 48.2px;
+            background-image: url('../../../assets/drawable/computer_icon.svg');    
+        }
+    }
+}

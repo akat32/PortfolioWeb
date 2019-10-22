@@ -7,16 +7,12 @@ import { ProjectData } from '../../../context/ProjectData'
 import './style.scss'
 
 export const ProjectSelector = () => {
-    useEffect( () => {
-        console.log(ProjectData)
-    }, [])
     return (
-        <div>
-            <div style = {{ height : '4em'}}/>
+        <div className = "SelectorMain">
             <p className = "title">프로젝트</p>
             <p className = "subTitle">보려고자 하는 프로젝트를 선택해주세요</p>
             <SelectorProvider>
-                <div>
+                <div className = "projectList">
                     <Selector />
                 </div>
             </SelectorProvider>
@@ -30,10 +26,10 @@ const Selector = () => {
         <div>
             <SelectorConsumer>
                 { ({actions} : any) => (
-                    <div>
+                    <div className = "innerList">
                         { ProjectData.map( (item, i) => (
                             <div
-                                key = { i }
+                                key = { `option_${i}` }
                                 className = "item"
                                 onClick = { () => {
                                     actions.setNumber(i)

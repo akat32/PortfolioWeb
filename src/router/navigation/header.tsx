@@ -6,7 +6,7 @@ const Menu = ['Home', 'Resume', 'Github', 'Blog', 'Portfolio']
 export const HeaderNavigation: React.FC = () => {
     const [ match, setMatch ] = useState(window.location.pathname)
     function fontBold (url: String) {
-        if( url === 'Home' && match == '/') return { fontWeight : 700 }
+        if( url === 'Home' && match === '/') return { fontWeight : 700 }
         if( '/' + url === match ) return { fontWeight: 700 }
         else return { fontWeight : 100 }
     }
@@ -22,7 +22,7 @@ export const HeaderNavigation: React.FC = () => {
         if( contact === 'Github' ) url = 'https://github.com/akat32'
         else if ( contact === 'Blog' ) url = 'https://blog.naver.com/akat32'
         else if ( contact === 'Resume' ) alert('준비중입니다!')
-        if ( url != '') {
+        if ( url !== '') {
             let win = window.open(url, '_blank');
             win!.focus();
         }

@@ -2,5 +2,22 @@
     width: 64px;
     height: 64px;
     background-color: gray;
-    border-radius: 30%;
+    border-radius: 25%;
+    margin-left: 40px;
+    margin-top: 31px;
+}
+
+
+.SelectorMain {
+    margin-left: 5.5vw;
+    margin-top: 11vh;
+    .projectList {
+        margin-top: 2px;
+        margin-left: -40px;
+        .innerList {
+            flex-wrap: wrap;
+            width: 312px;
+            display: flex;
+        }
+    }
 }
