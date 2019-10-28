@@ -1,0 +1,46 @@
+.projectView { 
+    flex: 1;
+    .contant {
+        display: flex;
+        width: 100%;
+        .deviceView {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .views {
+            font-size: .95em;
+            margin-top: 1.9vh;
+        }
+        .views2 {
+            font-size: .85em;
+            margin-top: .4em;
+            font-weight: bold;
+            margin-bottom: 1.5em;
+        }
+    }
+}
+.view {
+    background-repeat: no-repeat;
+    background-size: contain;
+    // width: 100px;
+    // height: 100px;
+}
+.viewIPhone {
+    width: 38vh;
+    height: 80vh;
+    background-image: url('../../../assets/mockup/stensil.png');
+}
+.viewCOMPUTER {
+    margin-top: 5vh !important;
+    width: 95.6vh;
+    height: 72.8vh;
+    background-image: url('../../../assets/mockup/computer_mockup.png');   
+}
+.viewTablet {
+    width: 57vh;
+    height: 80vh;
+    background-image: url('../../../assets/mockup/tablet_mockup.png');
+}

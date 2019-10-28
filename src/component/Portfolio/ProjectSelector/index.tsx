@@ -11,9 +11,12 @@ export const ProjectSelector = () => {
             <p className = "title">프로젝트</p>
             <p className = "subTitle">보려고자 하는 프로젝트를 선택해주세요</p>
             <>
+                <hr style = {{marginTop : '30px'}}/>
                 <div className = "projectList">
                     <Selector />
                 </div>
+                <hr/>
+
             </>
         </div>
     )
@@ -40,10 +43,11 @@ const Item = (props: any) => {
     const dispatch:any = useProjectDispatch()
     const number = useProjectState().number
     function SelectedCheck() {
-        if ( props.num === number ) return { backgroundColor: 'red' }
+        if ( props.num === number ) return { 
+        }
     }
     return (
-        <div className = "item" style = { SelectedCheck() } onClick = { () => {
+        <div className = {"item " + `${'projectIcon' + props.num}`} style = {SelectedCheck()} onClick = { () => {
             dispatch({type : 'CHANGE_NUMBER', number : props.num})
         }}>
             { props.num }

@@ -17,6 +17,7 @@ import { useDeviceDispatch, useDeviceState } from '../../context/DeviceContext'
 // description
 import { ProjectSelector } from './ProjectSelector'
 import { ProjectInfo } from './ProjectInfo/index'
+import { View } from './ProjectView/index'
 
 export const Portfolio = () => {
     
@@ -26,9 +27,7 @@ export const Portfolio = () => {
             <div style = {{ height : '4em'}}/>
             <div className = "contant">
                 <ProjectSelector/>
-                <div style = {{ flex : 1 }}>
-                    <p>{Device}</p>
-                </div>
+                <View/>
                 <ProjectInfo/>
             </div>
         </div>
