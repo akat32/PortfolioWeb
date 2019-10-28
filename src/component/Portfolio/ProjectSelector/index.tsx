@@ -1,44 +1,52 @@
 import React, { useEffect, useContext } from 'react'
 
-import { SelectorConsumer, SelectorProvider } from '../../../context/ProjectSelector/Selector'
-import SelectorContext from '../../../context/ProjectSelector/Selector'
-
 import { ProjectData } from '../../../context/ProjectData'
+import { useProjectDispatch, useProjectState } from '../../../context/ProjectContext'
 import './style.scss'
 
 export const ProjectSelector = () => {
+
     return (
         <div className = "SelectorMain">
             <p className = "title">프로젝트</p>
             <p className = "subTitle">보려고자 하는 프로젝트를 선택해주세요</p>
-            <SelectorProvider>
+            <>
                 <div className = "projectList">
                     <Selector />
                 </div>
-            </SelectorProvider>
+            </>
         </div>
     )
 }
 
 const Selector = () => {
-    const { state } = useContext(SelectorContext)
     return (
         <div>
-            <SelectorConsumer>
-                { ({actions} : any) => (
+            <>
                     <div className = "innerList">
                         { ProjectData.map( (item, i) => (
-                            <div
+                            <Item
                                 key = { `option_${i}` }
-                                className = "item"
-                                onClick = { () => {
-                                    actions.setNumber(i)
-                                }}
+                                num = { i }
                             />
                         ))}
                     </div>
-                )}
-            </SelectorConsumer>
+            </>
+        </div>
+    )
+}
+
+const Item = (props: any) => {
+    const dispatch:any = useProjectDispatch()
+    const number = useProjectState().number
+    function SelectedCheck() {
+        if ( props.num === number ) return { backgroundColor: 'red' }
+    }
+    return (
+        <div className = "item" style = { SelectedCheck() } onClick = { () => {
+            dispatch({type : 'CHANGE_NUMBER', number : props.num})
+        }}>
+            { props.num }
         </div>
     )
 }

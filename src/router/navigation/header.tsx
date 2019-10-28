@@ -14,7 +14,7 @@ export const HeaderNavigation: React.FC = () => {
         return ( window.location.pathname === '/' ) ? "header back" : "header"
     }
     function paramChange ( url : String ) {
-        if ( url === 'Home') return ''
+        if ( url === 'Home' || url === 'Github' || url === 'Blog') return ''
         else return url
     }
     function clickLink ( contact: String ) {

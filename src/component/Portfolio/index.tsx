@@ -3,6 +3,7 @@ import React from 'react'
 import './style.scss'
 
 
+import { useDeviceDispatch, useDeviceState } from '../../context/DeviceContext'
 // 들어가야 할 변수
 
 // project, 현재 프로젝트
@@ -14,16 +15,20 @@ import './style.scss'
 // 화면
 // 기종 변경
 // description
-import { ProjectSelector } from './ProjectSelector/index'
+import { ProjectSelector } from './ProjectSelector'
 import { ProjectInfo } from './ProjectInfo/index'
 
 export const Portfolio = () => {
+    
+    const Device = useDeviceState().device
     return (
         <div className = "project">
             <div style = {{ height : '4em'}}/>
             <div className = "contant">
                 <ProjectSelector/>
-                <div style = {{ flex : 1 }}/>
+                <div style = {{ flex : 1 }}>
+                    <p>{Device}</p>
+                </div>
                 <ProjectInfo/>
             </div>
         </div>

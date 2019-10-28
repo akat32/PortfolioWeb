@@ -8,10 +8,13 @@ import './App.scss'
 import { HeaderNavigation } from './navigation/header'
 import { Home, Portfolio } from '../component'
 import { RedirectLink } from './Redirect/index'
+import { DeviceProvider } from '../context/DeviceContext'
+import { ProjectProvider } from '../context/ProjectContext'
 const App: React.FC = () => {
   return (
     <Router>
-      <>
+      <DeviceProvider>
+        <ProjectProvider>
         <HeaderNavigation />
         <Switch>
           <Route exact path = '/'>
@@ -24,7 +27,8 @@ const App: React.FC = () => {
             <RedirectLink/>
           </Route>
         </Switch>
-      </>
+        </ProjectProvider>
+      </DeviceProvider>
     </Router>  
   );
 }
