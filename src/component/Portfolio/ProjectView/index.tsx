@@ -1,36 +1,68 @@
-import React, { useEffect, useState, useMemo, useContext } from 'react'
+import React, { useEffect, useState, useMemo, useContext } from "react";
 
-import './style.scss'
-import { ProjectData } from '../../../context/ProjectData'
+import "./style.scss";
+import { ProjectData } from "../../../context/ProjectData";
 
+import { useProjectDispatch } from "../../../context/ProjectContext";
+import { useProjectState } from "../../../context/ProjectContext";
+import { useDeviceState } from "../../../context/DeviceContext";
 
-import { useProjectState } from '../../../context/ProjectContext'
-import { useDeviceState } from '../../../context/DeviceContext'
-
-let designPage = 1
 export const View = () => {
-    return (
-        <div className = "projectView">
-            <div className = "contant">
-                <DeviceView/>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="projectView">
+      <div className="contant">
+        <DeviceView />
+      </div>
+    </div>
+  );
+};
 
 const DeviceView = () => {
-    let device = useDeviceState().device
-    let number = useProjectState().number
-    const [ info, setInfo ] = useState(ProjectData[number])
-    useMemo( () => {
-        setInfo(ProjectData[number])
-        designPage = 1
-    }, [useProjectState()])
-    return (
-        <div className = "deviceView">
-            <p className = "title views">{ info.title }</p>
-            <p className = "subTitle views2">{ designPage + '/' + info.design.length }</p>
-            <div className = { 'view ' + 'view' + device }></div>
+  let device = useDeviceState().device;
+  let number = useProjectState().number;
+  let state: any = useProjectState();
+  let dispatch: any = useProjectDispatch();
+  const [info, setInfo] = useState(ProjectData[number]);
+  useMemo(() => {
+    setInfo(ProjectData[number]);
+  }, [useProjectState()]);
+  return (
+    <div className="deviceView">
+      <p className="title views">{info.title}</p>
+      <div
+        className="leftBtn"
+        onClick={() => {
+          if (state.projectImgIdx - 1 === 0) alert("첫 번째 페이지입니다.");
+          else {
+            dispatch({
+              type: "CHANGE_PROJECTIMGIDX",
+              idx: state.projectImgIdx - 1,
+            });
+          }
+        }}
+      />
+      <div
+        className="rightBtn"
+        onClick={() => {
+          if (state.projectImgIdx + 1 === info.design.length + 1)
+            alert("마지막 페이지입니다.");
+          else {
+            dispatch({
+              type: "CHANGE_PROJECTIMGIDX",
+              idx: state.projectImgIdx + 1,
+            });
+          }
+        }}
+      />
+      <p className="subTitle views2">
+        {state.projectImgIdx + "/" + info.design.length}
+      </p>
+      <div className={"view " + "view" + device}>
+        <div className="DeviceView" />
+        <div className="imgView">
+          <img src={info.design[state.projectImgIdx - 1]} />
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
