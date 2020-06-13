@@ -6,6 +6,7 @@ import {
   useProjectState,
 } from "../../../context/ProjectContext";
 import "./style.scss";
+import { stat } from "fs";
 
 export const ProjectSelector = () => {
   return (
@@ -39,14 +40,15 @@ const Selector = () => {
 
 const Item = (props: any) => {
   const dispatch: any = useProjectDispatch();
-  const number = useProjectState().number;
+  const state = useProjectState();
+  const number = state.number;
   function SelectedCheck() {
     if (props.num === number) return {};
   }
   return (
     <div
-      className={"item " + `${"projectIcon" + props.num}`}
-      style={SelectedCheck()}
+      className={"item " + `${"projectIcon"}`}
+      style={{ backgroundImage: `url(${ProjectData[props.num].icon})` }}
       onClick={() => {
         dispatch({ type: "CHANGE_NUMBER", number: props.num });
       }}

@@ -1,31 +1,33 @@
 .title {
-    //NotoSansCJKkr-Black
-    font-size: 1.25em;
-    font-weight: bold;
-    margin-bottom: 0.4vh;
+  //NotoSansCJKkr-Black
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-bottom: 0.4vh;
 }
 .subTitle {
-    font-size: .95em;
+  font-size: 0.95em;
 }
 
 .contant {
-    display: flex;
-    position: relative;
+  display: flex;
+  position: relative;
 }
 
 .alignRight {
-    text-align: end;
+  text-align: end;
 }
-
-
-.projectIcon0 {
-    background-image: url('../../assets/icon/Penlight.png');
-    background-size: cover;
-    background-repeat: no-repeat;
+.projectIcon {
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+// .projectIcon0 {
+//     background-image: url('../../assets/icon/Penlight.png');
+//     background-size: cover;
+//     background-repeat: no-repeat;
+// }
 
-.projectIcon1 {
-    background-image: url('../../assets/icon/mockgongso.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
+// .projectIcon1 {
+//     background-image: url('../../assets/icon/mockgongso.png');
+//     background-size: cover;
+//     background-repeat: no-repeat;
+// }
