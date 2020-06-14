@@ -32,7 +32,11 @@ const DeviceView = () => {
       <div
         className="leftBtn"
         onClick={() => {
-          if (state.projectImgIdx - 1 === 0) alert("첫 번째 페이지입니다.");
+          if (state.projectImgIdx - 1 === 0)
+            dispatch({
+              type: "CHANGE_PROJECTIMGIDX",
+              idx: info.design.length,
+            });
           else {
             dispatch({
               type: "CHANGE_PROJECTIMGIDX",
@@ -45,7 +49,10 @@ const DeviceView = () => {
         className="rightBtn"
         onClick={() => {
           if (state.projectImgIdx + 1 === info.design.length + 1)
-            alert("마지막 페이지입니다.");
+            dispatch({
+              type: "CHANGE_PROJECTIMGIDX",
+              idx: 1,
+            });
           else {
             dispatch({
               type: "CHANGE_PROJECTIMGIDX",

@@ -4,6 +4,7 @@ import "./style.scss";
 import { ProjectData } from "../../../context/ProjectData";
 import { useDeviceDispatch } from "../../../context/DeviceContext";
 import { useProjectState } from "../../../context/ProjectContext";
+
 export const ProjectInfo = () => {
   return (
     <div className="projectInfo">
