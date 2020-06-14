@@ -5,6 +5,7 @@ import {
   useProjectDispatch,
   useProjectState,
 } from "../../../context/ProjectContext";
+import { useDeviceDispatch } from "../../../context/DeviceContext";
 import "./style.scss";
 import { stat } from "fs";
 
@@ -40,6 +41,7 @@ const Selector = () => {
 
 const Item = (props: any) => {
   const dispatch: any = useProjectDispatch();
+  let deviceDispatch: any = useDeviceDispatch();
   const state = useProjectState();
   const number = state.number;
   function SelectedCheck() {
@@ -50,6 +52,8 @@ const Item = (props: any) => {
       className={"item " + `${"projectIcon"}`}
       style={{ backgroundImage: `url(${ProjectData[props.num].icon})` }}
       onClick={() => {
+        deviceDispatch({ type: "RESET" });
+        dispatch({ type: "RESET_PROJECTIMG" });
         dispatch({ type: "CHANGE_NUMBER", number: props.num });
       }}
     >

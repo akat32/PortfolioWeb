@@ -27,6 +27,11 @@ function ProjectReducer(state: any, action: any) {
       };
     case "RESET":
       return getInitialState();
+    case "RESET_PROJECTIMG":
+      return {
+        ...state,
+        projectImgIdx: 1,
+      };
     case "ALERT":
       return alert("Test");
   }

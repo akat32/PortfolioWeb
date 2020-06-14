@@ -6,13 +6,18 @@ import { useDeviceDispatch } from "../../../context/DeviceContext";
 import { useProjectState } from "../../../context/ProjectContext";
 
 export const ProjectInfo = () => {
+  let number = useProjectState().number;
+  const [info, setInfo] = useState(ProjectData[number]);
+  useMemo(() => {
+    setInfo(ProjectData[number]);
+  }, [useProjectState()]);
   return (
     <div className="projectInfo">
       <p className="title alignRight">기종</p>
       <p className="subTitle alignRight">기종을 선택해주세요.</p>
       <>
         <div>
-          <DeviceSelector />
+          <DeviceSelector info={info} />
         </div>
       </>
       <p className="title alignRight">설명</p>
@@ -27,33 +32,50 @@ export const ProjectInfo = () => {
   );
 };
 
-const DeviceSelector = () => {
+const DeviceSelector = (info: any) => {
   const dispatch: any = useDeviceDispatch();
   return (
     <div className="deviceSelector">
-      <div
-        className="Iphone"
-        onClick={() => dispatch({ type: "CHANGE_IPHONE" })}
-      >
-        <div className="img" />
-        <p className="DeviceTitle">IPhone</p>
-      </div>
-      <div style={{ flex: 1 }} />
-      <div
-        className="Tablet"
-        onClick={() => dispatch({ type: "CHANGE_TABLET" })}
-      >
-        <div className="img" />
-        <p className="DeviceTitle">Tablet</p>
-      </div>
-      <div style={{ flex: 1 }} />
-      <div
-        className="Computer"
-        onClick={() => dispatch({ type: "CHANGE_COMPUTER" })}
-      >
-        <div className="img" />
-        <p className="DeviceTitle">Computer</p>
-      </div>
+      {info.info.iphone.length !== 0 ? (
+        <>
+          <div style={{ flex: 1 }} />
+          <div
+            className="Iphone"
+            onClick={() => dispatch({ type: "CHANGE_IPHONE" })}
+          >
+            <div className="img" />
+            <p className="DeviceTitle">IPhone</p>
+          </div>
+          <div style={{ flex: 1 }} />
+        </>
+      ) : null}
+      {info.info.tablet.length !== 0 ? (
+        <>
+          <div style={{ flex: 1 }} />
+          <div
+            className="Tablet"
+            onClick={() => dispatch({ type: "CHANGE_TABLET" })}
+          >
+            <div className="img" />
+            <p className="DeviceTitle">Tablet</p>
+          </div>
+          <div style={{ flex: 1 }} />
+        </>
+      ) : null}
+      {info.info.computer.length !== 0 ? (
+        <>
+          <div style={{ flex: 1 }} />
+
+          <div
+            className="Computer"
+            onClick={() => dispatch({ type: "CHANGE_COMPUTER" })}
+          >
+            <div className="img" />
+            <p className="DeviceTitle">Computer</p>
+          </div>
+          <div style={{ flex: 1 }} />
+        </>
+      ) : null}
     </div>
   );
 };

@@ -67,7 +67,15 @@ const DeviceView = () => {
       <div className={"view " + "view" + device}>
         <div className="DeviceView" />
         <div className="imgView">
-          <img src={info.design[state.projectImgIdx - 1]} />
+          {device === "IPhone" ? (
+            <img src={info.iphone[state.projectImgIdx - 1]} />
+          ) : null}
+          {device === "Tablet" ? (
+            <img src={info.tablet[state.projectImgIdx - 1]} />
+          ) : null}
+          {device === "COMPUTER" ? (
+            <img src={info.computer[state.projectImgIdx - 1]} />
+          ) : null}
         </div>
       </div>
     </div>
