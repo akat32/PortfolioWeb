@@ -3,7 +3,10 @@ import "./style.scss";
 
 import { ProjectData } from "../../../context/ProjectData";
 import { useDeviceDispatch } from "../../../context/DeviceContext";
-import { useProjectState } from "../../../context/ProjectContext";
+import {
+  useProjectState,
+  useProjectDispatch,
+} from "../../../context/ProjectContext";
 
 export const ProjectInfo = () => {
   let number = useProjectState().number;
@@ -34,6 +37,7 @@ export const ProjectInfo = () => {
 
 const DeviceSelector = (info: any) => {
   const dispatch: any = useDeviceDispatch();
+  const projectDevice: any = useProjectDispatch();
   return (
     <div className="deviceSelector">
       {info.info.iphone.length !== 0 ? (
@@ -41,7 +45,10 @@ const DeviceSelector = (info: any) => {
           <div style={{ flex: 1 }} />
           <div
             className="Iphone"
-            onClick={() => dispatch({ type: "CHANGE_IPHONE" })}
+            onClick={() => {
+              projectDevice({ type: "RESET_PROJECTIMG" });
+              dispatch({ type: "CHANGE_IPHONE" });
+            }}
           >
             <div className="img" />
             <p className="DeviceTitle">IPhone</p>
@@ -54,7 +61,10 @@ const DeviceSelector = (info: any) => {
           <div style={{ flex: 1 }} />
           <div
             className="Tablet"
-            onClick={() => dispatch({ type: "CHANGE_TABLET" })}
+            onClick={() => {
+              projectDevice({ type: "RESET_PROJECTIMG" });
+              dispatch({ type: "CHANGE_TABLET" });
+            }}
           >
             <div className="img" />
             <p className="DeviceTitle">Tablet</p>
@@ -68,7 +78,10 @@ const DeviceSelector = (info: any) => {
 
           <div
             className="Computer"
-            onClick={() => dispatch({ type: "CHANGE_COMPUTER" })}
+            onClick={() => {
+              projectDevice({ type: "RESET_PROJECTIMG" });
+              dispatch({ type: "CHANGE_COMPUTER" });
+            }}
           >
             <div className="img" />
             <p className="DeviceTitle">Computer</p>
