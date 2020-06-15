@@ -1,32 +1,33 @@
 $backgroundColor: #333333;
-$mainBackgroundColor: rgba( 255, 255, 255, 0 );
+$mainBackgroundColor: rgba(255, 255, 255, 0);
 .back {
-    background-color: $mainBackgroundColor!important;
+  background-color: $mainBackgroundColor !important;
 }
 .header {
-    position: fixed;
-    top : 0;
-    width: 100%;
-    height: 4em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 4em;
+  display: flex;
+  z-index: 999999;
+  align-items: center;
+  justify-content: center;
+  background-color: $backgroundColor;
+  .logo {
+    margin-left: 10.4%;
+    text-align: center;
+    a {
+      font-size: 1.05em;
+    }
+  }
+  .navigationMenu {
+    margin-right: 7.3%;
     display: flex;
-    align-items: center;
-    justify-content: center;    
-    background-color: $backgroundColor;
-    .logo {
-        margin-left: 10.4%;
-        text-align: center;
-        a {
-            font-size: 1.05em;
-        }
+    li {
+      margin-right: 3.1vw;
+      a {
+        font-size: 1em;
+      }
     }
-    .navigationMenu {
-        margin-right: 7.3%;
-        display: flex;
-        li {
-            margin-right: 3.1vw;
-            a {
-                font-size: 1em;
-            }
-        }
-    }
+  }
 }

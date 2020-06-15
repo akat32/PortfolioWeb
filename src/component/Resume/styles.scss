@@ -1,0 +1,11 @@
+.Resume {
+  .innerPdf {
+    background-color: #fff;
+    padding-top: 4em;
+    width: 100%;
+    canvas {
+      margin-left: 20%;
+      width: 60% !important;
+    }
+  }
+}
