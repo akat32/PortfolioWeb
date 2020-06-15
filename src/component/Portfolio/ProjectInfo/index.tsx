@@ -8,6 +8,10 @@ import {
   useProjectDispatch,
 } from "../../../context/ProjectContext";
 
+import web from "../../../assets/www.svg";
+import git from "../../../assets/github.svg";
+import playstore from "../../../assets/playstore.svg";
+
 export const ProjectInfo = () => {
   let number = useProjectState().number;
   const [info, setInfo] = useState(ProjectData[number]);
@@ -126,6 +130,50 @@ const Info = () => {
           <div>
             <p className="title infoText">프로젝트 내용</p>
             <p className="subTitle infoBText">{info.contents}</p>
+          </div>
+          <div className="projectInfoLocation">
+            {info.github !== "" ? (
+              <>
+                <div style={{ flex: 1 }} />
+                <img
+                  src={git}
+                  className="git"
+                  onClick={() => {
+                    window.location.href = info.github;
+                  }}
+                />
+
+                <div style={{ flex: 1 }} />
+              </>
+            ) : null}
+            {info.playStore !== "" ? (
+              <>
+                <div style={{ flex: 1 }} />
+                <img
+                  src={playstore}
+                  className="play"
+                  onClick={() => {
+                    window.location.href = info.playStore;
+                  }}
+                />
+
+                <div style={{ flex: 1 }} />
+              </>
+            ) : null}{" "}
+            {info.webSite !== "" ? (
+              <>
+                <div style={{ flex: 1 }} />
+                <img
+                  src={web}
+                  className="web"
+                  onClick={() => {
+                    window.location.href = info.webSite;
+                  }}
+                />
+
+                <div style={{ flex: 1 }} />
+              </>
+            ) : null}
           </div>
         </div>
       </>

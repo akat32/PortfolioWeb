@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect, useMemo } from "react";
 import "./styles.scss";
-
 // import { Document, Page } from "react-pdf";
 let FileViewer: any = require("react-file-viewer");
 let resumeFile = require("../../assets/resume.pdf");

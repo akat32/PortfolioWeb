@@ -7,7 +7,6 @@ import {
 } from "../../../context/ProjectContext";
 import { useDeviceDispatch } from "../../../context/DeviceContext";
 import "./style.scss";
-import { stat } from "fs";
 
 export const ProjectSelector = () => {
   return (

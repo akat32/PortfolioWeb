@@ -1,11 +1,20 @@
-import React, { useEffect, useState, useMemo, useContext } from "react";
+import React, {
+  useEffect,
+  useState,
+  useMemo,
+  useContext,
+  Component,
+} from "react";
 
 import "./style.scss";
 import { ProjectData } from "../../../context/ProjectData";
+import "@polymer/iron-image/iron-image.js";
 
 import { useProjectDispatch } from "../../../context/ProjectContext";
 import { useProjectState } from "../../../context/ProjectContext";
 import { useDeviceState } from "../../../context/DeviceContext";
+import SmallImage from "./PLACEHOLDER.jpg.png";
+import "./iron.css";
 
 export const View = () => {
   return (
@@ -84,6 +93,11 @@ const DeviceView = () => {
             <div className="DeviceView" />
             <div className="imgView">
               {device === "IPhone" ? (
+                // <IronImage
+                //   srcPreload={SmallImage}
+                //   srcLoaded={info.iphone[state.projectImgIdx - 1]}
+                //   num={state.projectImgIdx}
+                // />
                 <img src={info.iphone[state.projectImgIdx - 1]} />
               ) : null}
               {device === "Tablet" ? (
@@ -99,3 +113,55 @@ const DeviceView = () => {
     </div>
   );
 };
+
+interface Iprops {
+  srcLoaded: string;
+  srcPreload: string;
+  num: number;
+}
+interface Istate {
+  num: number;
+}
+class IronImage extends Component<Iprops, Istate> {
+  ironImageHd: any | null;
+  num: number;
+  constructor(props: any) {
+    super(props);
+    this.ironImageHd = null;
+    this.num = 1;
+  }
+
+  componentDidMount() {
+    const hdLoaderImg = new Image();
+    hdLoaderImg.src = this.props.srcLoaded;
+
+    hdLoaderImg.onload = () => {
+      this.ironImageHd.setAttribute(
+        "style",
+        `background-image: url('${this.props.srcLoaded}')`
+      );
+      this.ironImageHd.classList.add("iron-image-fade-in");
+    };
+    this.setState({
+      num: this.props.num,
+    });
+  }
+
+  render() {
+    return (
+      <div className="iron-image-container">
+        <div
+          className="iron-image-loaded"
+          ref={(imageLoadedElem) => (this.ironImageHd = imageLoadedElem)}
+        ></div>
+
+        <div
+          className="iron-image-preload"
+          style={{ backgroundImage: `url('${this.props.srcPreload}')` }}
+        ></div>
+      </div>
+    );
+  }
+}
+
+export default IronImage;
