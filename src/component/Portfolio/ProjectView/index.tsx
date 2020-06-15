@@ -26,7 +26,7 @@ const DeviceView = () => {
   const [design, setDesign] = useState<String[] | null>(null);
   useMemo(() => {
     setInfo(ProjectData[number]);
-  }, [useProjectState()]);
+  }, [number]);
   useMemo(() => {
     switch (device) {
       case "IPhone":
@@ -39,7 +39,7 @@ const DeviceView = () => {
         setDesign(info.computer);
         break;
     }
-  }, [device]);
+  }, [device, number, info]);
   return (
     <div className="deviceView">
       {design !== null ? (
