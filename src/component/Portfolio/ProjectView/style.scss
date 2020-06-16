@@ -11,36 +11,37 @@
       justify-content: center;
     }
     .views {
-      font-size: 0.95em;
-      margin-top: 1.9vh;
+      font-size: 0.95rem;
+      margin-top: 4rem;
     }
     .leftBtn {
-      width: 1.4em;
-      height: 2em;
+      width: 1.3rem;
+      height: 2rem;
       cursor: pointer;
       background-image: url("../../../assets/nextL.svg");
       background-repeat: no-repeat;
       background-size: contain;
-      top: 1em;
-      left: 3em;
+      top: 0.35rem;
+      left: -5rem;
+      z-index: 99;
       position: absolute;
     }
     .rightBtn {
-      width: 1.4em;
-      height: 2em;
+      width: 1.3rem;
+      height: 2rem;
       cursor: pointer;
       background-image: url("../../../assets/nextR.svg");
       background-repeat: no-repeat;
       background-size: contain;
-      top: 1em;
-      right: 3em;
+      top: 0.35rem;
+      right: -5rem;
       position: absolute;
     }
     .views2 {
-      font-size: 0.85em;
-      margin-top: 0.4em;
+      font-size: 0.95rem;
+      margin-top: 0.4rem;
       font-weight: bold;
-      margin-bottom: 1.5em;
+      margin-bottom: 1.5rem;
     }
   }
 }
@@ -51,8 +52,9 @@
   // height: 100px;
 }
 .viewIPhone {
-  width: 38vh;
-  height: 80vh;
+  margin-top: 1rem;
+  width: 28rem;
+  height: 59rem;
   position: relative;
   .DeviceView {
     z-index: 100;
@@ -79,10 +81,10 @@
   }
 }
 .viewCOMPUTER {
-  margin-top: 5vh !important;
-  width: 95.6vh;
+  margin-top: 5rem !important;
+  width: 52.5rem;
   position: relative;
-  height: 72.8vh;
+  height: 40rem;
   .DeviceView {
     z-index: 100;
     background-image: url("../../../assets/mockup/computer_mockup.png");
@@ -107,9 +109,19 @@
     }
   }
 }
+.ProjectTitle {
+  margin-left: 0.1rem;
+  position: relative;
+  font-size: 1.3rem !important;
+  display: block;
+  height: 2rem;
+  width: 15rem;
+  text-align: center;
+}
 .viewTablet {
-  width: 57vh;
-  height: 80vh;
+  margin-top: 3rem;
+  width: 40rem;
+  height: 56.5rem;
   position: relative;
   .DeviceView {
     z-index: 100;

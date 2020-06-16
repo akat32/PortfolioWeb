@@ -1,10 +1,10 @@
 .item {
-  width: 64px;
+  width: calc(25% - 1rem);
   cursor: pointer;
-  height: 64px;
+  padding-bottom: 20.5%;
   border-radius: 50%;
-  margin-left: 7px;
-  margin-right: 7px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   // margin-left: 40px;
   margin-top: 7px;
   background-color: gray;
@@ -12,16 +12,15 @@
 }
 
 .SelectorMain {
-  margin-left: 5.5vw;
-  margin-top: 11vh;
+  padding-left: 6rem;
+  margin-top: 8.5rem;
   .projectList {
     // margin-left: -40px;
     overflow-y: scroll;
     height: 60vh;
     .innerList {
       position: relative;
-
-      width: 312px;
+      width: 22.285rem;
       display: inline-block;
       // flex-direction: column;
       // align-items: center;

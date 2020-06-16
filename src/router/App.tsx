@@ -6,6 +6,8 @@ import { Home, Portfolio, Resume } from "../component";
 import { RedirectLink } from "./Redirect/index";
 import { DeviceProvider } from "../context/DeviceContext";
 import { ProjectProvider } from "../context/ProjectContext";
+
+import DeviceOrientation, { Orientation } from "react-screen-orientation";
 const App: React.FC = () => {
   return (
     <Router>

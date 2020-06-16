@@ -57,39 +57,42 @@ const DeviceView = () => {
     <div className="deviceView">
       {design !== null ? (
         <>
-          <p className="title views">{info.title}</p>
-          <div
-            className="leftBtn"
-            onClick={() => {
-              if (state.projectImgIdx - 1 === 0)
-                dispatch({
-                  type: "CHANGE_PROJECTIMGIDX",
-                  idx: design.length,
-                });
-              else {
-                dispatch({
-                  type: "CHANGE_PROJECTIMGIDX",
-                  idx: state.projectImgIdx - 1,
-                });
-              }
-            }}
-          />
-          <div
-            className="rightBtn"
-            onClick={() => {
-              if (state.projectImgIdx + 1 === design.length + 1)
-                dispatch({
-                  type: "CHANGE_PROJECTIMGIDX",
-                  idx: 1,
-                });
-              else {
-                dispatch({
-                  type: "CHANGE_PROJECTIMGIDX",
-                  idx: state.projectImgIdx + 1,
-                });
-              }
-            }}
-          />
+          <p className="title views ProjectTitle">
+            <div
+              className="leftBtn"
+              onClick={() => {
+                if (state.projectImgIdx - 1 === 0)
+                  dispatch({
+                    type: "CHANGE_PROJECTIMGIDX",
+                    idx: design.length,
+                  });
+                else {
+                  dispatch({
+                    type: "CHANGE_PROJECTIMGIDX",
+                    idx: state.projectImgIdx - 1,
+                  });
+                }
+              }}
+            />
+            <div
+              className="rightBtn"
+              onClick={() => {
+                if (state.projectImgIdx + 1 === design.length + 1)
+                  dispatch({
+                    type: "CHANGE_PROJECTIMGIDX",
+                    idx: 1,
+                  });
+                else {
+                  dispatch({
+                    type: "CHANGE_PROJECTIMGIDX",
+                    idx: state.projectImgIdx + 1,
+                  });
+                }
+              }}
+            />
+            {info.title}
+          </p>
+
           <p className="subTitle views2">
             {state.projectImgIdx + "/" + design.length}
           </p>
@@ -97,11 +100,6 @@ const DeviceView = () => {
             <div className="DeviceView" />
             <div className="imgView">
               {device === "IPhone" ? (
-                // <IronImage
-                //   srcPreload={SmallImage}
-                //   srcLoaded={info.iphone[state.projectImgIdx - 1]}
-                //   num={state.projectImgIdx}
-                // />
                 <LazyLoadImage
                   alt={SmallImage}
                   width={"100%"}
@@ -138,55 +136,3 @@ const DeviceView = () => {
     </div>
   );
 };
-
-interface Iprops {
-  srcLoaded: string;
-  srcPreload: string;
-  num: number;
-}
-interface Istate {
-  num: number;
-}
-class IronImage extends Component<Iprops, Istate> {
-  ironImageHd: any | null;
-  num: number;
-  constructor(props: any) {
-    super(props);
-    this.ironImageHd = null;
-    this.num = 1;
-  }
-
-  componentDidMount() {
-    const hdLoaderImg = new Image();
-    hdLoaderImg.src = this.props.srcLoaded;
-
-    hdLoaderImg.onload = () => {
-      this.ironImageHd.setAttribute(
-        "style",
-        `background-image: url('${this.props.srcLoaded}')`
-      );
-      this.ironImageHd.classList.add("iron-image-fade-in");
-    };
-    this.setState({
-      num: this.props.num,
-    });
-  }
-
-  render() {
-    return (
-      <div className="iron-image-container">
-        <div
-          className="iron-image-loaded"
-          ref={(imageLoadedElem) => (this.ironImageHd = imageLoadedElem)}
-        ></div>
-
-        <div
-          className="iron-image-preload"
-          style={{ backgroundImage: `url('${this.props.srcPreload}')` }}
-        ></div>
-      </div>
-    );
-  }
-}
-
-export default IronImage;
