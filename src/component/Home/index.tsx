@@ -17,10 +17,10 @@ export const Home = () => {
                   <div className="inner_box">
                     <div className="inner_info_box">
                       <img src={item.icon} className="carrerIcon" />
-                      <div className="carrerInfo">
+                      <div className="carrerInfo info_info">
                         <p className="info_title">{item.company}</p>
                         <p className="info_sub">{item.job}</p>
-                        <p>
+                        <p className="info_date">
                           <span>{item.startAt}</span> ~{" "}
                           <span>{item.endAt !== "" ? item.endAt : "현재"}</span>
                         </p>
@@ -41,10 +41,10 @@ export const Home = () => {
                   <div className="inner_box">
                     <div className="inner_info_box">
                       <img src={item.icon} className="carrerIcon" />
-                      <div className="educationInfo">
+                      <div className="educationInfo info_info">
                         <p className="info_title">{item.school}</p>
                         <p className="info_sub">{item.department}</p>
-                        <p>
+                        <p className="info_date">
                           <span>{item.startAt}</span> ~{" "}
                           <span>{item.endAt !== "" ? item.endAt : "현재"}</span>
                         </p>
@@ -63,10 +63,10 @@ export const Home = () => {
                 <div className="awardsItem resumeItem" key={i}>
                   <div className="inner_box">
                     <div className="inner_info_box">
-                      <div className="awardsInfo">
+                      <div className="awardsInfo info_info">
                         <p className="info_title">{item.title}</p>
                         <p className="info_sub">{item.host}</p>
-                        <p>{item.date}</p>
+                        <p className="info_date">{item.date}</p>
                       </div>
                     </div>
                   </div>
@@ -84,10 +84,10 @@ export const Home = () => {
                 <div className="certificateItem resumeItem" key={i}>
                   <div className="inner_box">
                     <div className="inner_info_box">
-                      <div className="awardsInfo">
+                      <div className="awardsInfo info_info">
                         <p className="info_title">{item.title}</p>
                         <p className="info_sub">{item.host}</p>
-                        <p>{item.date}</p>
+                        <p className="info_date">{item.date}</p>
                       </div>
                     </div>
                   </div>
