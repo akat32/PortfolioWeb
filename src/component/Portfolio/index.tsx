@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useEffect } from "react";
 
-import './style.scss'
+import "./style.scss";
 
-
-import { useDeviceDispatch, useDeviceState } from '../../context/DeviceContext'
+import { useDeviceDispatch, useDeviceState } from "../../context/DeviceContext";
 // 들어가야 할 변수
 
 // project, 현재 프로젝트
@@ -15,21 +14,19 @@ import { useDeviceDispatch, useDeviceState } from '../../context/DeviceContext'
 // 화면
 // 기종 변경
 // description
-import { ProjectSelector } from './ProjectSelector'
-import { ProjectInfo } from './ProjectInfo/index'
-import { View } from './ProjectView/index'
+import { ProjectSelector } from "./ProjectSelector";
+import { ProjectInfo } from "./ProjectInfo/index";
+import { View } from "./ProjectView/index";
 
 export const Portfolio = () => {
-    
-    const Device = useDeviceState().device
-    return (
-        <div className = "project">
-            <div style = {{ height : '4em'}}/>
-            <div className = "contant">
-                <ProjectSelector/>
-                <View/>
-                <ProjectInfo/>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="project">
+      <div style={{ height: "4em" }} />
+      <div className="contant">
+        <ProjectSelector />
+        <View />
+        <ProjectInfo />
+      </div>
+    </div>
+  );
+};
