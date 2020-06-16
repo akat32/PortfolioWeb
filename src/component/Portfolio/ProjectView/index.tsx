@@ -8,13 +8,17 @@ import React, {
 
 import "./style.scss";
 import { ProjectData } from "../../../context/ProjectData";
-import "@polymer/iron-image/iron-image.js";
 
 import { useProjectDispatch } from "../../../context/ProjectContext";
 import { useProjectState } from "../../../context/ProjectContext";
 import { useDeviceState } from "../../../context/DeviceContext";
+
+import "@polymer/iron-image/iron-image.js";
 import SmallImage from "./PLACEHOLDER.jpg.png";
 import "./iron.css";
+
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export const View = () => {
   return (
@@ -98,14 +102,35 @@ const DeviceView = () => {
                 //   srcLoaded={info.iphone[state.projectImgIdx - 1]}
                 //   num={state.projectImgIdx}
                 // />
-                <img src={info.iphone[state.projectImgIdx - 1]} />
-              ) : null}
+                <LazyLoadImage
+                  alt={SmallImage}
+                  width={"100%"}
+                  height={"100%"}
+                  effect="blur"
+                  src={info.iphone[state.projectImgIdx - 1]}
+                />
+              ) : // <img src={info.iphone[state.projectImgIdx - 1]} />
+              null}
               {device === "Tablet" ? (
-                <img src={info.tablet[state.projectImgIdx - 1]} />
-              ) : null}
+                <LazyLoadImage
+                  alt={SmallImage}
+                  effect="blur"
+                  width={"100%"}
+                  height={"100%"}
+                  src={info.tablet[state.projectImgIdx - 1]}
+                />
+              ) : // <img src={info.tablet[state.projectImgIdx - 1]} />
+              null}
               {device === "COMPUTER" ? (
-                <img src={info.computer[state.projectImgIdx - 1]} />
-              ) : null}
+                <LazyLoadImage
+                  alt={SmallImage}
+                  effect="blur"
+                  width={"100%"}
+                  height={"100%"}
+                  src={info.computer[state.projectImgIdx - 1]}
+                />
+              ) : // <img src={info.computer[state.projectImgIdx - 1]} />
+              null}
             </div>
           </div>
         </>
