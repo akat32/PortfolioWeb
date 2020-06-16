@@ -1,3 +1,6 @@
+import earlysloth from "../assets/Company/earlyslothLogo.png";
+import underpin from "../assets/Company/underpin.png";
+import sunrin from "../assets/School/sunrin.png";
 export const ResumeData = {
   career: [
     // 경력
@@ -8,8 +11,7 @@ export const ResumeData = {
       job: "프론트엔드 개발자", // 배정받은 일
       description:
         "React, Vue를 이용한 서비스 리펙토링, 리빌딩을 맡고 있습니다.",
-      icon:
-        "https://image.rocketpunch.com/company/33489/earlysloth_logo_1502876617.jpg?s=100x100&t=inside",
+      icon: earlysloth,
     },
     {
       company: "언더핀 (Underpin)",
@@ -17,8 +19,7 @@ export const ResumeData = {
       endAt: "2019년 6월",
       job: "웹 풀스택 개발자",
       description: "UI수정, 웹서비스 리펙토링을 맡았습니다",
-      icon:
-        "https://image.rocketpunch.com/company/33489/earlysloth_logo_1502876617.jpg?s=100x100&t=inside",
+      icon: underpin,
     },
   ],
   education: [
@@ -27,8 +28,7 @@ export const ResumeData = {
       startAt: "2017년",
       endAt: "2020년",
       department: "소프트웨어과", // 학과
-      icon:
-        "https://image.rocketpunch.com/company/33489/earlysloth_logo_1502876617.jpg?s=100x100&t=inside",
+      icon: sunrin,
     },
   ],
   awards: [
