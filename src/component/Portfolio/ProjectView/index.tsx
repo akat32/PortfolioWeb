@@ -52,7 +52,49 @@ const DeviceView = () => {
         setDesign(info.computer);
         break;
     }
-  }, [device, number, info]);
+  }, [device, info]);
+
+  const moveImgToBefore = (maxLength: any) => {
+    return new Promise((resolve) => {
+      if (state.projectImgIdx - 1 === 0)
+        dispatch({
+          type: "CHANGE_PROJECTIMGIDX",
+          idx: maxLength,
+        });
+      else {
+        dispatch({
+          type: "CHANGE_PROJECTIMGIDX",
+          idx: state.projectImgIdx - 1,
+        });
+      }
+      resolve();
+    });
+  };
+  const moveImgToNext = (maxLength: any) => {
+    return new Promise((resolve) => {
+      if (state.projectImgIdx === maxLength)
+        dispatch({
+          type: "CHANGE_PROJECTIMGIDX",
+          idx: 1,
+        });
+      else {
+        dispatch({
+          type: "CHANGE_PROJECTIMGIDX",
+          idx: state.projectImgIdx + 1,
+        });
+      }
+      resolve();
+    });
+  };
+  useEffect(() => {
+    if (design === null) return;
+    const timer = setTimeout(() => {
+      moveImgToNext(design.length);
+      return () => {
+        clearInterval(timer);
+      };
+    }, 3000);
+  }, [state.projectImgIdx]);
   return (
     <div className="deviceView">
       {design !== null ? (
@@ -61,33 +103,24 @@ const DeviceView = () => {
             <div
               className="leftBtn"
               onClick={() => {
-                if (state.projectImgIdx - 1 === 0)
-                  dispatch({
-                    type: "CHANGE_PROJECTIMGIDX",
-                    idx: design.length,
-                  });
-                else {
-                  dispatch({
-                    type: "CHANGE_PROJECTIMGIDX",
-                    idx: state.projectImgIdx - 1,
-                  });
-                }
+                moveImgToBefore(design.length);
               }}
             />
             <div
               className="rightBtn"
               onClick={() => {
-                if (state.projectImgIdx + 1 === design.length + 1)
-                  dispatch({
-                    type: "CHANGE_PROJECTIMGIDX",
-                    idx: 1,
-                  });
-                else {
-                  dispatch({
-                    type: "CHANGE_PROJECTIMGIDX",
-                    idx: state.projectImgIdx + 1,
-                  });
-                }
+                // if (state.projectImgIdx + 1 === design.length + 1)
+                //   dispatch({
+                //     type: "CHANGE_PROJECTIMGIDX",
+                //     idx: 1,
+                //   });
+                // else {
+                //   dispatch({
+                //     type: "CHANGE_PROJECTIMGIDX",
+                //     idx: state.projectImgIdx + 1,
+                //   });
+                // }
+                moveImgToNext(design.length);
               }}
             />
             {info.title}
