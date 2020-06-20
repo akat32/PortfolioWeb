@@ -1,15 +1,9 @@
-import React, {
-  useEffect,
-  useState,
-  useMemo,
-  useContext,
-  Component,
-} from "react";
+import React, { useEffect, useState, useMemo } from "react";
 
 import "./style.scss";
 import { ProjectData } from "../../../context/ProjectData";
-
-import { useProjectDispatch } from "../../../context/ProjectContext";
+// import Swiper from "react-easy-swipe";
+import { useSwipeable, Swipeable } from "react-swipeable";
 import { useProjectState } from "../../../context/ProjectContext";
 import { useDeviceState } from "../../../context/DeviceContext";
 
@@ -33,13 +27,26 @@ export const View = () => {
 const DeviceView = () => {
   let device = useDeviceState().device;
   let number = useProjectState().number;
-  let state: any = useProjectState();
-  let dispatch: any = useProjectDispatch();
   const [info, setInfo] = useState(ProjectData[number]);
   const [design, setDesign] = useState<String[] | null>(null);
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (design !== null)
+        idx === design.length - 1
+          ? setIdx((idx) => 0)
+          : setIdx((idx) => idx + 1);
+    }, 3000);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [idx]);
   useMemo(() => {
     setInfo(ProjectData[number]);
   }, [number]);
+  useMemo(() => {
+    setIdx(0);
+  }, [number, device]);
   useMemo(() => {
     switch (device) {
       case "IPhone":
@@ -53,48 +60,20 @@ const DeviceView = () => {
         break;
     }
   }, [device, info]);
-
-  const moveImgToBefore = (maxLength: any) => {
-    return new Promise((resolve) => {
-      if (state.projectImgIdx - 1 === 0)
-        dispatch({
-          type: "CHANGE_PROJECTIMGIDX",
-          idx: maxLength,
-        });
-      else {
-        dispatch({
-          type: "CHANGE_PROJECTIMGIDX",
-          idx: state.projectImgIdx - 1,
-        });
-      }
-      resolve();
-    });
-  };
-  const moveImgToNext = (maxLength: any) => {
-    return new Promise((resolve) => {
-      if (state.projectImgIdx === maxLength)
-        dispatch({
-          type: "CHANGE_PROJECTIMGIDX",
-          idx: 1,
-        });
-      else {
-        dispatch({
-          type: "CHANGE_PROJECTIMGIDX",
-          idx: state.projectImgIdx + 1,
-        });
-      }
-      resolve();
-    });
-  };
-  useEffect(() => {
-    if (design === null) return;
-    const timer = setTimeout(() => {
-      moveImgToNext(design.length);
-      return () => {
-        clearInterval(timer);
-      };
-    }, 3000);
-  }, [state.projectImgIdx]);
+  const handlers = useSwipeable({
+    onSwipedRight: () => {
+      if (design !== null)
+        return idx === 0
+          ? setIdx((idx) => design.length - 1)
+          : setIdx((idx) => idx - 1);
+    },
+    onSwipedLeft: () => {
+      if (design !== null)
+        idx === design.length - 1
+          ? setIdx((idx) => 0)
+          : setIdx((idx) => idx + 1);
+    },
+  });
   return (
     <div className="deviceView">
       {design !== null ? (
@@ -103,34 +82,25 @@ const DeviceView = () => {
             <div
               className="leftBtn"
               onClick={() => {
-                moveImgToBefore(design.length);
+                return idx === 0
+                  ? setIdx((idx) => design.length - 1)
+                  : setIdx((idx) => idx - 1);
               }}
             />
             <div
               className="rightBtn"
               onClick={() => {
-                // if (state.projectImgIdx + 1 === design.length + 1)
-                //   dispatch({
-                //     type: "CHANGE_PROJECTIMGIDX",
-                //     idx: 1,
-                //   });
-                // else {
-                //   dispatch({
-                //     type: "CHANGE_PROJECTIMGIDX",
-                //     idx: state.projectImgIdx + 1,
-                //   });
-                // }
-                moveImgToNext(design.length);
+                return idx === design.length - 1
+                  ? setIdx((idx) => 0)
+                  : setIdx((idx) => idx + 1);
               }}
             />
             {info.title}
           </p>
-
-          <p className="subTitle views2">
-            {state.projectImgIdx + "/" + design.length}
-          </p>
+          <p className="subTitle views2">{idx + 1 + "/" + design.length}</p>
           <div className={"view " + "view" + device}>
-            <div className="DeviceView" />
+            <div className="DeviceView" {...handlers} />
+
             <div className="imgView">
               {device === "IPhone" ? (
                 <LazyLoadImage
@@ -138,30 +108,27 @@ const DeviceView = () => {
                   width={"100%"}
                   height={"100%"}
                   effect="blur"
-                  src={info.iphone[state.projectImgIdx - 1]}
+                  src={info.iphone[idx]}
                 />
-              ) : // <img src={info.iphone[state.projectImgIdx - 1]} />
-              null}
+              ) : null}
               {device === "Tablet" ? (
                 <LazyLoadImage
                   alt={SmallImage}
                   effect="blur"
                   width={"100%"}
                   height={"100%"}
-                  src={info.tablet[state.projectImgIdx - 1]}
+                  src={info.tablet[idx]}
                 />
-              ) : // <img src={info.tablet[state.projectImgIdx - 1]} />
-              null}
+              ) : null}
               {device === "COMPUTER" ? (
                 <LazyLoadImage
                   alt={SmallImage}
                   effect="blur"
                   width={"100%"}
                   height={"100%"}
-                  src={info.computer[state.projectImgIdx - 1]}
+                  src={info.computer[idx]}
                 />
-              ) : // <img src={info.computer[state.projectImgIdx - 1]} />
-              null}
+              ) : null}
             </div>
           </div>
         </>

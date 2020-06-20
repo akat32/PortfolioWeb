@@ -21,6 +21,7 @@
     "react-router-dom": "^5.1.2",
     "react-screen-orientation": "^0.0.4",
     "react-scripts": "3.2.0",
+    "react-swipeable": "^5.5.1",
     "react-typescript-pdf-reader": "^0.0.13",
     "sass-loader": "^8.0.0",
     "typescript": "3.6.4"
